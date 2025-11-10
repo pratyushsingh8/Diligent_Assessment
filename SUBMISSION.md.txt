@@ -1,0 +1,71 @@
+# Diligent — Build Your Own (Submission)
+
+
+Hi — I built a minimal e-commerce prototype. The app displays products, lets users view details and add items to a shopping cart. Cart data is stored in the browser (localStorage). Cursor signup was blocked, so I used a local single-file fallback to demonstrate the full user flow. The submitted prompts show how this converts to a React + Express stack if required. Demo: I will add a product to the cart, open the cart, and simulate checkout now.
+
+## What I built
+A minimal e-commerce demo (single-file) that lists products, shows product details, supports adding items to a shopping cart, and simulates checkout. The cart data is persisted in the browser using `localStorage`.
+
+## Files submitted
+- `demo.html` (single-file frontend demo)
+- `SUBMISSION.md` (this document)
+
+## Technical architecture (brief)
+- Frontend: single HTML file with JavaScript and CSS (no build step). Renders product grid, product detail popup, and cart modal.
+- Data: demo uses in-file sample product data (6 products). Cart stored in `localStorage`.
+- Backend: planned as Node.js + Express (not required for this fallback demo). API endpoints in a full-stack version would be:
+  - `GET /api/products` — list of products
+  - `GET /api/products/:id` — product details
+  - `POST /api/cart` — echo cart action (optional)
+- Navigation/UX: product list → view details (popup) → add to cart → view cart → checkout (simulated).
+
+## How to run (exact)
+1. Double-click `demo.html` in your file explorer (or open it in a browser).
+2. Use the UI:
+   - Click **Add to Cart** on products.
+   - Click **View Cart** (top-right) to open cart modal.
+   - Click **Checkout** to simulate purchase (clears cart).
+
+No server or installation required.
+
+## Prompts used
+
+### Backend prompt
+You are a senior backend engineer. Create a minimal Node.js + Express backend for a demo e-commerce app. Requirements:
+
+- Node 18+ compatible.
+- Endpoints:
+  - GET /api/products → returns an array of products `{id, name, price, img, description}`
+  - GET /api/products/:id → returns a single product by ID
+  - POST /api/cart → accepts `{productId, qty}` and returns a confirmation response.
+- Seed the server with 6 sample products using placeholder images from `https://via.placeholder.com/`.
+- Use in-memory data (no database required).
+- Enable CORS for `http://localhost:3000`.
+- Provide `package.json` and `server.js` with start instructions:
+
+npm install
+npm start
+
+- Return complete file contents only — well-commented, simple, and easy to test locally.
+
+### Frontend prompt
+You are a senior frontend engineer. Create a minimal web-based e-commerce interface for the backend running on `http://localhost:5000`.
+
+Requirements:
+
+- Use HTML, CSS, and JavaScript (or React if available).
+- Pages / components:
+- Product List: Display grid of products (image, name, price, "View" and "Add to Cart" buttons).
+- Product Detail: Show product image, description, and “Add to Cart” button.
+- Cart: Display added items, quantities, total price, and allow checkout or removal.
+- Persist cart in `localStorage` so it remains after page refresh.
+- Style with clean, simple CSS (no frameworks).
+- If React is used, configure routes `/`, `/product/:id`, `/cart` with `react-router-dom`.
+- Return complete code ready to run in browser or via local server.
+
+## What I will demo (script)
+“Hello — I built a minimal e-commerce prototype. It lists products, shows product details, lets users add items to a cart and simulates checkout. The cart is persisted in `localStorage`. I used AI-assisted prompts to design the system; Cursor signup was blocked on my account, so I delivered a working local fallback (files included). In a full implementation I would wire this to a Node/Express backend and use React + React Router for page navigation.”
+
+## Quick notes for evaluators
+- The fallback is intentionally single-file to meet time constraints and environment limitations. The provided prompts and architecture show how this would be extended to a full React + Node app.
+
